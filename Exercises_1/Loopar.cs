@@ -1,8 +1,10 @@
-﻿using System;
+﻿using static CommonFunctionality.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Exercises_1;
 internal class Loopar : Exercises
@@ -10,50 +12,18 @@ internal class Loopar : Exercises
 	private static Loopar? loopar;
 	private Loopar()
 	{
-		_loopExercises = new()
+		string name = "Loopar";
+		Dictionary<int, Action> exercises = new()
 		{
 			{ 10, Loopar10 }
 		};
-	}
+		Init(name, exercises);
 
-	private static Dictionary<int, Action> _loopExercises;
+	}
 
 	public static Loopar GetLoopar()
 	{
 		return ( loopar ??= new Loopar() );
-	}
-
-	public override void Invoke()
-	{
-		while(true)
-		{
-			Console.Clear();
-			Console.WriteLine("Vilken loop-övning vill du visa?");
-			foreach(var exercise in _loopExercises)
-			{
-				Console.WriteLine(exercise.Key);
-			}
-
-			var input = Console.ReadLine();
-
-			if(int.TryParse(input, out var exerciseNumber))
-			{
-				if(_loopExercises.ContainsKey(exerciseNumber))
-				{
-					_loopExercises[exerciseNumber]();
-				}
-				else
-				{
-					Console.WriteLine("Invalid number");
-				}
-			}
-			else
-			{
-				Console.WriteLine("Invalid input");
-			}
-			Console.WriteLine("Press enter to continue...");
-			_ = Console.ReadLine();
-		}
 	}
 
 	public static void Loopar10()
