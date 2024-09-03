@@ -5,7 +5,9 @@ VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exercises_1", "Exercises_1\Exercises_1.csproj", "{CF18387D-BBF8-4F9C-B45F-AC4C8D6F3E2F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonFunctionality", "CommonFunctionality\CommonFunctionality.csproj", "{A351634F-E6BC-4D6E-B19F-EF4DC7E3DD5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonFunctionality", "CommonFunctionality\CommonFunctionality.csproj", "{A351634F-E6BC-4D6E-B19F-EF4DC7E3DD5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationService", "AuthenticationService\AuthenticationService.csproj", "{666BF354-438C-4CA1-8C63-4E789258CC6F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{A351634F-E6BC-4D6E-B19F-EF4DC7E3DD5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A351634F-E6BC-4D6E-B19F-EF4DC7E3DD5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A351634F-E6BC-4D6E-B19F-EF4DC7E3DD5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{666BF354-438C-4CA1-8C63-4E789258CC6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{666BF354-438C-4CA1-8C63-4E789258CC6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{666BF354-438C-4CA1-8C63-4E789258CC6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{666BF354-438C-4CA1-8C63-4E789258CC6F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -28,8 +28,6 @@ internal class Program
 
 		while(true)
 		{			
-			PromptContinue();
-
 			Console.WriteLine("Vilka övningar vill du visa?");
 			Console.WriteLine("0 Exit");
 			foreach(var exercises in _exerciseSingletons)
@@ -49,7 +47,6 @@ internal class Program
 				{
 					Console.Clear();
 					Console.WriteLine("Hej då!");
-					PromptContinue();
 					break;
 				}
 				else
@@ -69,6 +66,7 @@ internal class Program
 					continue;
 				}
 			}
+			PromptContinue();
 		}
 	}
 }

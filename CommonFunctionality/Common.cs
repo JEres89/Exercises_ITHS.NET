@@ -6,6 +6,7 @@ public static class Common
 	{
 		Console.WriteLine("Press enter to continue...");
 		_ = Console.ReadLine();
+		Console.Clear();
 	}
 
 	public static bool GetInt(out int output, int min = -1, int max = int.MinValue)

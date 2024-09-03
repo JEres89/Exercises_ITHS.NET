@@ -17,7 +17,9 @@ class Funktioner : Exercises
 			{ 1, Funktioner1 },
 			{ 2, Funktioner2 },
 			{ 3, Funktioner3 },
-			{ 4, Funktioner4 }
+			{ 4, Funktioner4 },
+			{ 5, Funktioner5 },
+
 		};
 		Init(name, exercises);
 	}
@@ -61,8 +63,9 @@ class Funktioner : Exercises
 		lastName = GetTextInput("efternamn");
 
 		PrintName(firstName, lastName);
+		PromptContinue();
 
-		
+
 		static void PrintName(string firstName, string lastName)
 		{
 			Console.WriteLine($"{firstName} {lastName}");
@@ -81,8 +84,9 @@ class Funktioner : Exercises
 		lastName = GetTextInput("efternamn");
 
 		Console.WriteLine(ReturnName(firstName, lastName));
+		PromptContinue();
 
-		
+
 		static string ReturnName(string firstName, string lastName)
 		{
 			return $"{firstName} {lastName}";
@@ -101,6 +105,7 @@ class Funktioner : Exercises
 		GetInt(out int number, min: 0);
 
 		Console.WriteLine(IsLonger(text, number) ? "Textens längd är högre än talet": "Talet är större än textens längd");
+		PromptContinue();
 
 		static bool IsLonger(string text, int number)
 		{
@@ -114,41 +119,51 @@ class Funktioner : Exercises
 		Skriv en funktion som översätter ett värde från Celsius till Fahrenheit. Både in-parameter och returvärde ska vara av datatyp double.
 		*/
 
+		string convertFrom,convertTo;
+		double grader;
+
 		while(true)
 		{
-			string convertFrom = GetTemperatureScale(GetChar("vilken temperaturskala du vill konvertera FRÅN (C, F, K)", Char.IsLetter));
+			convertFrom = GetTemperatureScale(GetChar("vilken temperaturskala du vill konvertera FRÅN (C, F, K)", Char.IsLetter));
 			Console.WriteLine();
 			if(convertFrom == string.Empty)
 			{
 				Console.WriteLine("Inte en godkänd temperaturskala");
 				continue;
 			}
+			break;
+		}
 
-			string convertTo = GetTemperatureScale(GetChar("vilken temperaturskala du vill konvertera TILL (C, F, K)", Char.IsLetter));
+		while(true)
+		{
+			convertTo = GetTemperatureScale(GetChar("vilken temperaturskala du vill konvertera TILL (C, F, K)", Char.IsLetter));
 			Console.WriteLine();
 			if(convertTo == string.Empty)
 			{
 				Console.WriteLine("Inte en godkänd temperaturskala");
 				continue;
 			}
-
 			if(convertFrom[0] == convertTo[0])
 			{
 				Console.WriteLine("Du kan inte konvertera till samma temperaturskala");
 				continue;
 			}
+			break;
+		}
 
+		while(true)
+		{
 			Console.Write($"Mata in grader i {convertFrom}: ");
-			if(!GetDouble(out double grader, min: GetMinValue(convertFrom[0])))
+			if(!GetDouble(out grader, min: GetMinValue(convertFrom[0])))
 			{
 				Console.WriteLine("Temperaturen är utanför temperaturskalan");
 				continue;
 			}
-
-			Console.WriteLine($"{grader}°{convertFrom[0]} motsvarar {ConvertTempScale(convertFrom[0], convertTo[0], grader)}°{convertTo[0]}");
-
-			PromptContinue();
+			break;
 		}
+
+		Console.WriteLine($"{grader}°{convertFrom[0]} motsvarar {ConvertTempScale(convertFrom[0], convertTo[0], grader)}°{convertTo[0]}");
+		PromptContinue();
 
 		static string GetTemperatureScale(char scale) =>		scale == 'C' ? "Celsius" : scale == 'F' ? "Fahrenheit" : scale == 'K' ? "Kelvin" : string.Empty;
 		static double ConvertTempScale(char from, char to, double degrees)
@@ -189,4 +204,57 @@ class Funktioner : Exercises
 		static double GetMinValue(char scale) => scale == 'C' ? -273.15 : scale == 'F' ? -459.67 : 0;
 	}
 
+	public static void Funktioner5()
+	{
+        /* Lägg in bindesträck mellan tecken i en sträng
+		Skriv en funktion som tar in en sträng och returnerar en sträng med ett bindestreck mellan varje tecken. T.ex om man skickar in “Fredrik” , så returnerar den “F-r-e-d-r-i-k”
+		*/
+
+        Console.WriteLine("Skriv en text som ska perforeras med ett annat tecken:");
+		string text = GetTextInput("text", false);
+
+		char c = GetChar("vilket tecken du vill ha som bindestecken", c => !Char.IsWhiteSpace(c));
+		char[] perforatedText = new char[text.Length*2-1];
+		int perforatedIndex = 0;
+
+		for(int i = 0 ; i < text.Length ; i++)
+		{
+			if(char.IsWhiteSpace(text[i]))
+			{
+				perforatedText[perforatedIndex] = text[i];
+				perforatedIndex++;
+				continue;
+			}
+			perforatedText[perforatedIndex] = text[i];
+			perforatedIndex++;
+			if(i+1 < text.Length)
+			{
+				if(char.IsWhiteSpace(text[i + 1]))
+				{
+					continue;
+				}
+				perforatedText[perforatedIndex] = c;
+				perforatedIndex++;
+			}
+		}
+
+		string output = new string(perforatedText, 0, perforatedIndex);
+
+		Console.WriteLine(output);
+		PromptContinue();
+	}
+
+	public static void Funktioner6()
+	{
+        /* 
+		*/
+        
+		Console.WriteLine("Skriv en text som ska perforeras med ett annat tecken:");
+		
+		string text = GetTextInput("text", false);
+
+
+
+		PromptContinue();
+	}
 }

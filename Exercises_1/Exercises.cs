@@ -24,34 +24,10 @@ internal abstract class Exercises
 		};
 	}
 
-	//public static void PromptContinue()
-	//{
-	//	Console.WriteLine("Press enter to continue...");
-	//	_ = Console.ReadLine();
-	//}
-	//public static bool GetInt(out int output, int min=-1, int max=-1)
-	//{
-	//	max = min > max ? min : max;
-	//	while(!int.TryParse(Console.ReadLine(), out output))
-	//	{
-	//		Console.WriteLine("Invalid input");
-	//	}
-	//	if(min != max)
-	//	{
-	//		return output >= min && output <= max;
-	//	}
-	//	else if(min > -1)
-	//	{
-	//		return output > min;
-	//	}
-	//	return true;
-	//}
-
 	public void Invoke()
 	{
 		while(true)
 		{
-			Console.Clear();
 			Console.WriteLine($"Vilken övning från {_name} vill du visa?");
 			Console.WriteLine("0 Tillbaka till index");
 			foreach(var exercise in _exercises)
