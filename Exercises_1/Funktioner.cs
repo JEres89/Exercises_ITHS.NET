@@ -246,12 +246,17 @@ class Funktioner : Exercises
 
 	public static void Funktioner6()
 	{
-        /* 
+		/* Egen version av String.Join();
+		Skriv en egen funktion som fungerar på samma sätt som String.Join();
 		*/
-        
-		Console.WriteLine("Skriv en text som ska perforeras med ett annat tecken:");
-		
-		string text = GetTextInput("text", false);
+
+		Console.WriteLine("Skriv in ett antal ord som ska bindas ihop av tecken");
+
+		foreach (var item in GetTextInput("text", false))
+		{
+
+		}
+		//string[] text = 
 
 
 

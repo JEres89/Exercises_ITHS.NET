@@ -20,7 +20,8 @@ internal abstract class Exercises
 			{ 1, ("Variabler", Variabler.GetVariabler()) },
 			{ 2, ("Loopar", Loopar.GetLoopar()) },
 			{ 3, ("Indexering", Indexering.GetIndexering()) },
-			{ 4, ("Funktioner", Funktioner.GetFunktioner()) }
+			{ 4, ("Funktioner", Funktioner.GetFunktioner()) },
+			{ 5, ("Euler", Euler.GetEuler()) }
 		};
 	}
 
