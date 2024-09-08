@@ -370,26 +370,33 @@ class Funktioner : Exercises
 	{
 		/* Heltal till text
 		Skriv en funktion som tar en ushort som parameter, och returnerar en sträng med numret utskrivet i ord.
-
 		*/
-		Console.WriteLine("Mata in ett heltal mellan 0 och 65535:");
-
-		GetInt(out var number, 0, 65535);
-		ushort shortNumber = (ushort)number ;
+		Console.WriteLine("Mata in ett heltal mellan -32,767 och 32,767:");
+		int number;
+		while(!GetInt(out number, -32767, 32767))
+		{
+			Console.WriteLine($"Ogiltig tal!");
+		}
+		short shortNumber = (short)number ;
 
 		Console.WriteLine(GetNumberName(shortNumber));
 
 		PromptContinue();
 
-		static string GetNumberName(ushort number)
+		static string GetNumberName(short number)
 		{
 			char[] digits = number.ToString().ToCharArray();
 			StringBuilder numberName = new();
 
 			int i = 0;
-			int num = 0;
+			if(digits[0] == '-')
+			{
+				numberName.Append("Minus ");
+				i++;
+			}
 
-			switch(digits.Length)
+			int num = 0;
+			switch(digits.Length-i)
 			{
 				case 5:
 					num = ( digits[i] - '0' ) * 10;
