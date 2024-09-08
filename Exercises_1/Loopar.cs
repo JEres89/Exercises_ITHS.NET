@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace Exercises_1;
+
 internal class Loopar : Exercises
 {
 	private static Loopar? loopar;
 	private Loopar()
 	{
 		string name = "Loopar";
-		Dictionary<int, Action> exercises = new()
+		Dictionary<int, (Action,string)> exercises = new()
 		{
-			{ 10, Loopar10 }
+			{ 10, (Loopar10, "Ihålig box") }
 		};
 		Init(name, exercises);
-
 	}
 
 	public static Loopar GetLoopar()
@@ -28,7 +28,7 @@ internal class Loopar : Exercises
 
 	public static void Loopar10()
 	{
-		/*
+		/* Ihålig box
 		Fråga efter bredd och höjd och skriv ut en “box” som inte är fylld.
 
 		Exempel:

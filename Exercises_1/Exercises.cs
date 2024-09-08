@@ -4,14 +4,14 @@ namespace Exercises_1;
 
 internal abstract class Exercises
 {
-	protected void Init(string name, Dictionary<int, Action> exercises)
+	protected void Init(string name, Dictionary<int, (Action, string)> exercises)
 	{
 		_name = name;
 		_exercises = exercises;
 	}
 
 	private string _name;
-	private Dictionary<int, Action> _exercises;
+	private Dictionary<int, (Action,string)> _exercises;
 
 	public static Dictionary<int, (string name, Exercises singleton)> GetSingletons()
 	{
@@ -33,7 +33,7 @@ internal abstract class Exercises
 			Console.WriteLine("0 Tillbaka till index");
 			foreach(var exercise in _exercises)
 			{
-				Console.WriteLine(exercise.Key);
+				Console.WriteLine($"{exercise.Key}. {exercise.Value.Item2}");
 			}
 
 			int exerciseNumber;
@@ -42,7 +42,7 @@ internal abstract class Exercises
 			{
 				if(_exercises.ContainsKey(exerciseNumber))
 				{
-					_exercises[exerciseNumber]();
+					_exercises[exerciseNumber].Item1();
 				}
 				else
 				{
@@ -53,9 +53,8 @@ internal abstract class Exercises
 			else
 			{
 				Console.WriteLine("Invalid number");
+				PromptContinue();
 			}
-
-			PromptContinue();
 		}
 	}
 }

@@ -14,9 +14,9 @@ class Indexering : Exercises
 	private Indexering()
 	{
 		string name = "Indexering";
-		Dictionary<int, Action> exercises = new()
+		Dictionary<int, (Action, string)> exercises = new()
 		{
-			{ 1, Indexering1 }
+			{ 1, (Indexering1, "En bokstav på varje rad") }
 		};
 		Init(name, exercises);
 	}
@@ -29,7 +29,8 @@ class Indexering : Exercises
 
 	public static void Indexering1()
 	{
-		/* 
+		/* En bokstav på varje rad
+		Be användaren mata in en sträng. Skriv ut varje tecken i strängen på en egen rad.
 		*/
 
 

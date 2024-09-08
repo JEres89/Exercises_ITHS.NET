@@ -14,13 +14,13 @@ class Variabler : Exercises
 	private Variabler()
 	{
 		string name = "Variabler";
-		Dictionary<int, Action> exercises = new()
-		{
-			{ 1, Variabler1 }
-		};
+
+		Dictionary<int, (Action, string)> exercises = new()
+			{
+				{ 1, (Variabler1, "Variabler1") }
+			};
 		Init(name, exercises);
 	}
-
 
 	public static Variabler GetVariabler()
 	{
