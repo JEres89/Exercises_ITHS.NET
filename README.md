@@ -1,1 +1,1 @@
-# ITHS.NET_JERE
+# Exercises_ITHS.NET
