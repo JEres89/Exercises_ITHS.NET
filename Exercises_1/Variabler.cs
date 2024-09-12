@@ -22,9 +22,9 @@ class Variabler : Exercises
 		Init(name, exercises);
 	}
 
-	public static Variabler GetVariabler()
+	public static void UseVariabler()
 	{
-		return ( variabler ??= new Variabler() );
+		variabler ??= new Variabler();
 	}
 
 	public static void Variabler1()

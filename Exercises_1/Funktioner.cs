@@ -27,9 +27,9 @@ class Funktioner : Exercises
 		Init(name, exercises);
 	}
 
-	public static Funktioner GetFunktioner()
+	public static void UseFunktioner()
 	{
-		return ( funktioner ??= new Funktioner() );
+		funktioner ??= new Funktioner();
 	}
 
 	public static void Funktioner1()

@@ -8,21 +8,16 @@ internal abstract class Exercises
 	{
 		_name = name;
 		_exercises = exercises;
+		_singletons.Add(_singletons.Count + 1, (name, this));
 	}
 
 	private string _name;
 	private Dictionary<int, (Action,string)> _exercises;
+	private static Dictionary<int, (string name, Exercises singleton)> _singletons = new();
 
 	public static Dictionary<int, (string name, Exercises singleton)> GetSingletons()
 	{
-		return new()
-		{
-			{ 1, ("Variabler", Variabler.GetVariabler()) },
-			{ 2, ("Loopar", Loopar.GetLoopar()) },
-			{ 3, ("Indexering", Indexering.GetIndexering()) },
-			{ 4, ("Funktioner", Funktioner.GetFunktioner()) },
-			{ 5, ("Euler", Euler.GetEuler()) }
-		};
+		return _singletons;
 	}
 
 	public void Invoke()
@@ -38,16 +33,21 @@ internal abstract class Exercises
 
 			int exerciseNumber;
 
-			if(GetInt(out exerciseNumber, 0, _exercises.Count))
+			if(GetInt(out exerciseNumber, 0))
 			{
-				if(_exercises.ContainsKey(exerciseNumber))
+				if(_exercises.TryGetValue(exerciseNumber, out (Action, string) exercise))
 				{
-					_exercises[exerciseNumber].Item1();
+					exercise.Item1();
 				}
-				else
+				else if(exerciseNumber == 0)
 				{
 					Console.WriteLine("Tillbaka till index");
 					break;
+				}
+				else
+				{
+					Console.WriteLine("Övningen finns inte");
+					PromptContinue();
 				}
 			}
 			else

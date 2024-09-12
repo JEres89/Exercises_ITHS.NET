@@ -10,7 +10,7 @@ namespace Exercises_1;
 
 class Indexering : Exercises
 {
-	private static Indexering? indexering;
+	private static Indexering? _indexering;
 	private Indexering()
 	{
 		string name = "Indexering";
@@ -21,10 +21,9 @@ class Indexering : Exercises
 		Init(name, exercises);
 	}
 
-
-	public static Indexering GetIndexering()
+	public static void UseIndexering()
 	{
-		return ( indexering ??= new Indexering() );
+		_indexering ??= new Indexering();
 	}
 
 	public static void Indexering1()

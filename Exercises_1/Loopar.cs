@@ -21,9 +21,9 @@ internal class Loopar : Exercises
 		Init(name, exercises);
 	}
 
-	public static Loopar GetLoopar()
+	public static void UseLoopar()
 	{
-		return ( loopar ??= new Loopar() );
+		loopar ??= new Loopar();
 	}
 
 	public static void Loopar10()

@@ -19,6 +19,13 @@ internal class Program
 
 	private static void PopulateSingletons()
 	{
+		Variabler.UseVariabler();
+		Loopar.UseLoopar();
+		Indexering.UseIndexering();
+		Funktioner.UseFunktioner();
+		Euler.UseEuler();
+		Filer.UseFiler();
+
 		_exerciseSingletons = Exercises.GetSingletons();
 	}
 
