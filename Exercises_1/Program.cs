@@ -25,6 +25,7 @@ internal class Program
 		Funktioner.UseFunktioner();
 		Euler.UseEuler();
 		Filer.UseFiler();
+		OOP.UseOOP();
 
 		_exerciseSingletons = Exercises.GetSingletons();
 	}
