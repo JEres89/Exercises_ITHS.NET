@@ -26,14 +26,16 @@ internal abstract class Exercises
 		{
 			Console.WriteLine($"Vilken övning från {_name} vill du visa?");
 			Console.WriteLine("0 Tillbaka till index");
+			int largestKey = 0;
 			foreach(var exercise in _exercises)
 			{
 				Console.WriteLine($"{exercise.Key}. {exercise.Value.Item2}");
+				largestKey = exercise.Key > largestKey ? exercise.Key : largestKey;
 			}
 
 			int exerciseNumber;
 
-			if(GetInt(out exerciseNumber, 0))
+			if(GetInt(out exerciseNumber, 0, largestKey))
 			{
 				if(_exercises.TryGetValue(exerciseNumber, out (Action, string) exercise))
 				{

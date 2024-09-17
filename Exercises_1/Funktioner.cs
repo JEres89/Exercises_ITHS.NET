@@ -35,7 +35,7 @@ class Funktioner : Exercises
 	public static void Funktioner1()
 	{
 		Console.WriteLine("Miniuppgift 1.1 & 1.2");
-		string name = GetTextInput("namn");
+		string name = GetTextInput("namn", TextTypes.name);
 		int num;
 		Console.Write("Mata in antal: ");
 		GetInt(out num, 0);
@@ -62,8 +62,8 @@ class Funktioner : Exercises
 
 		string firstName, lastName;
 
-		firstName = GetTextInput("förnamn");
-		lastName = GetTextInput("efternamn");
+		firstName = GetTextInput("förnamn", TextTypes.name);
+		lastName = GetTextInput("efternamn", TextTypes.name);
 
 		PrintName(firstName, lastName);
 		PromptContinue();
@@ -83,8 +83,8 @@ class Funktioner : Exercises
 
 		string firstName, lastName;
 
-		firstName = GetTextInput("förnamn");
-		lastName = GetTextInput("efternamn");
+		firstName = GetTextInput("förnamn", TextTypes.name);
+		lastName = GetTextInput("efternamn", TextTypes.name);
 
 		Console.WriteLine(ReturnName(firstName, lastName));
 		PromptContinue();
@@ -102,7 +102,7 @@ class Funktioner : Exercises
 		Skriv en funktion som tar in en sträng och ett heltal. Om längden på strängen är större än heltalet returnera true, annars false.
 		*/
 
-		string text = GetTextInput("text", false);
+		string text = GetTextInput("text");
 
 		Console.Write("Mata in ett heltal: ");
 		GetInt(out int number, min: 0);
@@ -214,7 +214,7 @@ class Funktioner : Exercises
 		*/
 
 		Console.WriteLine("Skriv en text som ska perforeras med ett annat tecken:");
-		string text = GetTextInput("text", false);
+		string text = GetTextInput("text");
 
 		char c = GetCharInput("vilket tecken du vill ha som bindestecken", c => !Char.IsWhiteSpace(c));
 
@@ -259,7 +259,7 @@ class Funktioner : Exercises
 
 		Console.WriteLine("Skriv in ett antal ord som ska bindas ihop av tecken");
 
-		var text = GetTextInput("text", false);
+		var text = GetTextInput("text");
 		List<string> words = new List<string>();
 
 		int wordStart = 0;
@@ -275,7 +275,7 @@ class Funktioner : Exercises
 		words.Add(text.Substring(wordStart));
 
 		Console.WriteLine("Skriv in tecknen som ska binda ihop orden:");
-		string joinString = GetTextInput("tecken", false);
+		string joinString = GetTextInput("tecken");
 
 		Console.WriteLine(JoinWords(words, joinString));
 

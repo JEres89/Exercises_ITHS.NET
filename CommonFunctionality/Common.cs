@@ -1,4 +1,6 @@
-﻿namespace CommonFunctionality;
+﻿using System.IO;
+
+namespace CommonFunctionality;
 
 public static class Common
 {
@@ -9,6 +11,13 @@ public static class Common
 		Console.Clear();
 	}
 
+	public enum TextTypes {
+		none = 0,
+		name = 1,
+		filePath = 2,
+		directoryPath = 3,
+
+	}
 	public static Dictionary<int, string> NumberNames = new()
 		{
 			{ 0, "noll" },
@@ -135,26 +144,57 @@ public static class Common
 
 	}
 
-	public static string GetTextInput(string denomination, bool isName = true)
+	public static string GetTextInput(string denomination, TextTypes inputType = TextTypes.none)
 	{
 		Console.Write($"Mata in {denomination}: ");
 		while(true)
 		{
 			var text = Console.ReadLine()?.Trim();
-			if(isName && !IsValidName(text))
+			switch(inputType)
 			{
-				Console.WriteLine($"Ogiltigt {denomination}!");
-				Console.Write($"Mata in {denomination}: ");
-			}
-			else
-			{
-				return text!;
+				case TextTypes.none:
+					return text!;
+				case TextTypes.name:
+					if(!IsValidName(text))
+					{
+						Console.WriteLine($"Ogiltigt {denomination}!");
+						Console.Write($"Mata in {denomination}: ");
+						continue;
+					}
+					return text!;
+				case TextTypes.filePath:
+					if(!File.Exists(text))
+					{
+						Console.WriteLine($"Ogiltigt format eller filen finns inte!");
+						Console.Write($"Mata in {denomination}: ");
+						continue;
+					}
+					return text!;
+				case TextTypes.directoryPath:
+					if(!Directory.Exists(text))
+					{
+						Console.WriteLine($"Ogiltigt format eller mappen finns inte!");
+						Console.Write($"Mata in {denomination}: ");
+						continue;
+					}
+					return text!;
+				default:
+					return text!;
 			}
 		}
 	}
 
 	private static bool IsValidName(string? name)
 	{
-		return !string.IsNullOrWhiteSpace(name) && Char.IsUpper(name[0]) && !name.Any(Char.IsNumber);
+		return !string.IsNullOrWhiteSpace(name) && Char.IsUpper(name[0]) && !name.Any(Char.IsDigit);
 	}
+	//private static bool IsValidPath(string? path)
+	//{
+	//	var invalidChars = Path.GetInvalidPathChars();
+	//	if(!string.IsNullOrWhiteSpace(path) && !path.Any(c => invalidChars.Contains(c)))
+	//	{
+	//		return Path.Exists(path);
+	//	}
+	//	return false;
+	//}
 }
