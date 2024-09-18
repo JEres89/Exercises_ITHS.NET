@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Text;
 
 namespace CommonFunctionality;
 
@@ -197,4 +198,43 @@ public static class Common
 	//	}
 	//	return false;
 	//}
+	public static void PrintBox(int width, int height, int thickness = 1, char fill = ' ')
+	{
+		string edgeRow = new string('X', width);
+		string middleRow = new StringBuilder(width).Append('X', thickness).Append(fill, width - 2 * thickness).Append('X', thickness).ToString();
+
+		for (int i = 0; i < height; i++)
+		{
+			if (i < thickness || i >= height - thickness)
+			{
+				Console.WriteLine(edgeRow);
+			}
+			else
+			{
+				Console.WriteLine(middleRow);
+			}
+		}
+		Console.ReadLine();
+	}
+	public static void PrintBoxAt(int width, int height, int x, int y, int thickness = 1, char fill = ' ')
+	{
+		width = width < 2 ? 2 : width;
+		height = height < 2 ? 2 : height;
+
+		string edgeRow = new string('X', width);
+		string middleRow = new StringBuilder(width).Append('X', thickness).Append(fill, int.Max(0, width - 2 * thickness)).Append('X', thickness).ToString();
+
+		for (int i = 0; i < height; i++)
+		{
+			Console.SetCursorPosition(x, y++);
+			if (i < thickness || i >= height - thickness)
+			{
+				Console.Write(edgeRow);
+			}
+			else
+			{
+				Console.Write(middleRow);
+			}
+		}
+	}
 }

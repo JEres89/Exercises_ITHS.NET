@@ -1,4 +1,5 @@
-﻿using static CommonFunctionality.Common;
+﻿using System.Text;
+using static CommonFunctionality.Common;
 namespace Exercises_1;
 
 internal class Program

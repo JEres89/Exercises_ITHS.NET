@@ -22,7 +22,9 @@ class Funktioner : Exercises
 			{ 6, (Funktioner6, "Egen version av String.Join()") },
 			{ 7, (Funktioner7, "Beräkna medelvärde av int-array") },
 			{ 8, (Funktioner8, "Siffror till text") },
-			{ 9, (Funktioner9, "Heltal till text") }
+			{ 9, (Funktioner9, "Heltal till text") },
+			{ 12, (Funktioner12, "Boxes everywhere") },
+			{ 13, (Funktioner13, "Move the @") }
 		};
 		Init(name, exercises);
 	}
@@ -468,14 +470,51 @@ class Funktioner : Exercises
 		}
 	}
 
-	public static void Funktioner10()
+	public static void Funktioner12()
 	{
-		/* Hitta index för alla förekomster av ett givet tecken.
-		Skapa funktionen int[] IndexesOf(string text, char c) som söker igenom strängen text och returnerar en int[] med index till alla förekomster av c i text.
+		/* Rita en box
+		Skriv en funktion DrawBox(int width, int height). När man anropar funktionen ska den skriva ut en rektangel där de yttre tecknen består av ‘#’ och de inre av ‘-’.
+
+		Extrauppgift: Uppdatera funktionen och lägg till parametrar left och top (för positionen på översta vänstra hörnet av boxen. Skriv en loop som printar ut rektanglar med random storlek och position på skärmen.
 		*/
+		int width, height;
 
-		Console.WriteLine("Mata in :");
+		Console.Write("Mata in max-höjd: ");
+		while (!GetInt(out height, 1, Console.WindowHeight)) ;
 
+		Console.Write("Mata in max-bredd: ");
+		while (!GetInt(out width, 1, Console.WindowWidth)) ;
+
+		Console.Clear();
+
+		int maxLeft = Console.WindowWidth - width;
+		int maxTop = Console.WindowHeight - height;
+		Random rand = new();
+		for (int i = 0; i < 100; i++)
+		{
+			PrintBoxAt(rand.Next(width), rand.Next(height), rand.Next(maxLeft), rand.Next(maxTop), fill:'-');
+			Thread.Sleep(10);
+			//Console.ReadKey(true);
+		}
+
+		PromptContinue();
+	}
+
+	public static void Funktioner13()
+	{
+		/* Flytta runt ett @ med piltangenterna.
+		Låt oss skriva början till ett enkelt spel:
+
+		Använd DrawBox-funktionen i föregående uppgift för att rita en box på skärmen. Placera sedan ett @ i mitten av boxen. Om man använder piltangenterna ska man kunna flytta runt @. När den kommer till kanten av boxen så ska den inte kunna gå längre åt det hållet.
+		*/
+		Console.WriteLine("Mata in spelplanens bredd och höjd:");
+		int width, height;
+
+		while (!GetInt(out width, 5, Console.WindowWidth)) ;
+		while (!GetInt(out height, 5, Console.WindowHeight)) ;
+
+		Console.Clear();
+		PrintBox(width, height);
 
 		//Console.WriteLine($": { }");
 

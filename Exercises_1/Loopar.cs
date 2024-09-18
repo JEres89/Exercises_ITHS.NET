@@ -39,66 +39,24 @@ internal class Loopar : Exercises
 		X   X
 		XXXXX
 		*/
-		int x, y, d;
-		string? input;
+		int width, height, thickness;
 
 		Console.Write("Mata in höjd: ");
-		do
-		{
-			input = Console.ReadLine();
-		} while(!ParseInput(input, out y));
+		while(!GetInt(out height, 1, Console.WindowHeight));
 
 		Console.Write("Mata in bredd: ");
-		do
-		{
-			input = Console.ReadLine();
-		} while(!ParseInput(input, out x));
+		while(!GetInt(out width, 1, Console.WindowWidth));
 
 		Console.Write("Mata in kanttjocklek: ");
-		do
-		{
-			input = Console.ReadLine();
-		} while(!ParseInput(input, out d));
+		while (!GetInt(out thickness, 1, int.Min(width/2, height/2)));
 
-		d = d < 2 ? 
+		thickness = thickness < 2 ? 
 			1 : 
-			( d > x / 2 ) || ( d > y / 2 ) ? 
-				x < y ? 
-					x / 2 : 
-					y / 2 : 
-				d ;
-
-		PrintBox(x, y, d);
-	}
-
-	private static void PrintBox(int x, int y, int d)
-	{
-
-		string edgeRow = new string('X', x);
-		string middleRow = new StringBuilder(x).Append('X', d).Append(' ', x - 2 * d).Append('X', d).ToString();
-
-		for(int i = 0 ; i < y ; i++)
-		{
-			if(i < d || i >= y - d)
-			{
-                Console.WriteLine(edgeRow);
-			}
-			else
-			{
-				Console.WriteLine(middleRow);
-			}
-		}
-        Console.ReadLine();
-	}
-
-	private static bool ParseInput(string? input, out int result)
-	{
-		if(int.TryParse(input, out result))
-		{
-			return true;
-		}
-		Console.WriteLine("Invalid number");
-
-		return false;
+			( thickness > width / 2 ) || ( thickness > height / 2 ) ? 
+				width < height ? 
+					width / 2 : 
+					height / 2 : 
+				thickness ;
+		PrintBox(width, height, thickness);
 	}
 }
